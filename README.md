@@ -9,7 +9,7 @@
 <p>REACT-JS</p>  <!-- framework/biblioteca Javascript <!-->
 
 
-<h2>OBJETIVOS<h2>
+<h2>OBJETIVOS</h2>
 
 <p>UTILIZAR COMO UM TO DO LIST DIÁRIO</p>
 <p>PRÁTICA DOS ESTUDOS REALIZADOS</p>
