@@ -5,6 +5,9 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 //
 import App from './App'
 import PushTask from './components/PushTask'
+//
+
+import './Style.css'
 
 ReactDOM.render(
   <BrowserRouter>
