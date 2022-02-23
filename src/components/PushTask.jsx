@@ -1,50 +1,69 @@
 import { Input, Button} from 'reactstrap'
 import { useState } from 'react'
-import { BsFillXOctagonFill, BsFillPencilFill,BsFillFileCheckFill} from 'react-icons/bs'
 import '../Style.css'
+import RenderTask from './RenderTask'
+import EditTask from './EditTask'
 export default function PushTask() {
-  // 1 render an input
-  // 2 button render an input text
-  // 3 render in content RenderTask.jsx
-  // 4 put functions buttons ( edit, close) 
-  // 5 transform task into object ( symbol ?)
+  // 1 renderizar um "input" de texto
+  // 2 botão renderiza o texto do "input" na lista
+  // 3 renderizar a lista de tarefas (RenderTask.jsx)
+  // 4 adicionar funções de edição,remoção e confirmação da tarefa
+  // 5 identificação da tarefa via propriedades --> objeto
 
-  const [pushTask, setPushTask] = useState('')
-  const [Task, setTask] = useState([])
-  const [confirme, setConfirme] = useState(false)
-  //
+  const [pushTask, setPushTask] = useState('') // pegar o texto do "input"
+  const [Task, setTask] = useState([]) // enviar a texto para a lista de texto
+  const [isEdit, setIsEdit] = useState(false) // renderização para editar texto 
+  
 
-  // get content from input
+  // onChange do "Input" // setPushTask()
   const PushTextInput = (value) => {
    setPushTask(value.target.value)
   }
 
-  // send content in input from array of task
-  
+  // onClick do "Button" // setTask()
   const SendTextTask = ()=> {
     const objTask = {
     task: pushTask,
-    isComplete: confirme
+    isComplete: false,
+    isEdit: false
    }
       return setTask([...Task, objTask])
   }
 
-  //FUNCTION: TO CONFIRME 
+  // Função de confirmar a tarefa
 
-  const ConfirmTaskList = (index) => {
+  const ConfirmTaskList = index => {
     const newArray = [...Task]
     newArray[index].isComplete = !newArray[index].isComplete
       return setTask(newArray)
   }
 
-  // FUNCTION: TO REMOVE
+  // Função de remover a tarefa
   
-  const RemoveTaskList = (index) => {
+  const RemoveTaskList = index => {
     const newArray = [...Task]
       newArray.splice(index,1)
       return setTask(newArray)
   }
-  // render Task 
+  // Função de editar a tarefa 
+
+  const EditTaskActive = index => {
+    setIsEdit(!isEdit)
+  }
+
+  const EditTaskList = () => {
+    setIsEdit(!isEdit)
+    const newArray = [...Task]
+    newArray.splice(newArray.findIndex(value, index => {return index}),1,pushTask) 
+    return setTask(newArray)
+  }
+
+  if (isEdit === true) return <EditTask 
+  PushTextInput={PushTextInput}
+  EditTaskList={EditTaskList}
+
+  /> 
+// 
   return (
     <>
       <Input onChange={PushTextInput} />
@@ -53,32 +72,12 @@ export default function PushTask() {
         color='success'
         onClick={SendTextTask}
       >Enviar</Button>
-      <ul>
-      {Task.map((task, index) => {
-          return (  
-            <li key={index} className={task.isComplete ? 'confirme':'no-confirme'}>
-            
-            <Button active color='primary'>
-            <BsFillFileCheckFill onClick={() => {
-                ConfirmTaskList(index)
-            }}/>
-            </Button>
-              <>
-                  {task.task}
-              </>
-                <Button active color='warning'>
-                  <BsFillPencilFill />
-                </Button>
-                <Button active color='danger'>
-                  <BsFillXOctagonFill onClick={() => {
-                      RemoveTaskList(index)
-                  }}/>
-                </Button>
-            </li>
-          )
-      })}
-  </ul>
+       <RenderTask 
+       ConfirmTaskList={()=> ConfirmTaskList(index)} 
+       RemoveTaskList={() => RemoveTaskList(index)} 
+       Task={Task}
+       EditTaskActive={() => EditTaskActive(index)}
+       />
     </>
-
   )
 }
