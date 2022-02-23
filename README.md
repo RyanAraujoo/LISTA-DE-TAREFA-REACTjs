@@ -15,7 +15,13 @@
 --- react router dom   
 --- reactstrap//bootstrap
 --- material icon react
+--- componentização
+--- props
 
 <h2>TAREFAS</h2>
-<p>ADICIONAR FUNÇÕES EDITAR/REMOVER</p>
+<p>ADICIONAR FUNÇÕES EDITAR/REMOVER/CONFIRMAR</p>
 <p>ADICIONAR UM POMODORO QUANDO A TAREFA FOR CONCLUIDA</p>
+
+
+<h2>REGRAS</h2>
+<p>Uma tarefa não pode ter valor nulo</p>
