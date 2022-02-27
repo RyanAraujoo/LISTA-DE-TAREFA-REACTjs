@@ -24,8 +24,7 @@ export default function PushTask() {
   const SendTextTask = ()=> {
     const objTask = {
     task: pushTask,
-    isComplete: false,
-    isEdit: false
+    isComplete: false
    }
       return setTask([...Task, objTask])
   }
@@ -47,37 +46,36 @@ export default function PushTask() {
   }
   // Função de editar a tarefa 
 
-  const EditTaskActive = index => {
-    setIsEdit(!isEdit)
-  }
-
-  const EditTaskList = () => {
+  const EditTaskActive = (index) => {
     setIsEdit(!isEdit)
     const newArray = [...Task]
-    newArray.splice(newArray.findIndex(value, index => {return index}),1,pushTask) 
+    const objTask = {
+      task: pushTask,
+      isComplete: false
+     }
+    newArray.splice(newArray[index],1,objTask) 
     return setTask(newArray)
   }
 
   if (isEdit === true) return <EditTask 
-  PushTextInput={PushTextInput}
-  EditTaskList={EditTaskList}
-
+  PushTextInput={ (value) => {PushTextInput(value)}}
+  EditTaskActive={() => {EditTaskActive()}}
   /> 
 // 
   return (
-    <>
+    <div className='App'>
       <Input onChange={PushTextInput} />
       <Button
         active
         color='success'
         onClick={SendTextTask}
       >Enviar</Button>
-       <RenderTask 
-       ConfirmTaskList={()=> ConfirmTaskList(index)} 
-       RemoveTaskList={() => RemoveTaskList(index)} 
+       <RenderTask
+       ConfirmTaskList={index => ConfirmTaskList(index)} 
+       RemoveTaskList={index => RemoveTaskList(index)} 
        Task={Task}
-       EditTaskActive={() => EditTaskActive(index)}
+       EditTaskActive={index => EditTaskActive(index)}
        />
-    </>
+    </div>
   )
-}
+} 

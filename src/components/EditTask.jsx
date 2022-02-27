@@ -2,14 +2,14 @@ import { Input, Button} from 'reactstrap'
 export default function EditTask (props) {
     return (
         <>
-        <Input onChange={() => {
-            props.PushTextInput
-        }} />
+        <Input onChange={(value) => {
+            props.PushTextInput(value)
+        }}/>
         <Button
           active
           color='success'
           onClick={() => {
-            props.EditTaskList
+            props.EditTaskActive()
           }}
         >Editar</Button>
         </>

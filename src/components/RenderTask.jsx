@@ -5,7 +5,7 @@ export default function RenderTask (props) {
     // "push" da lista via props para ser renderizada
         const Task = props.Task 
     return (
-        <ul>
+        <ul className='task-list'>
             {Task.map((task, index) => {
           return (  
             <li key={index} className={task.isComplete ? 'confirme':'no-confirme'}>
