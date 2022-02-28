@@ -1,7 +1,6 @@
 import { Input, Button} from 'reactstrap'
 import { useState } from 'react'
 import RenderTask from './RenderTask'
-import EditTask from './EditTask'
 export default function PushTask() {
   // 1 renderizar um "input" de texto
   // 2 botão renderiza o texto do "input" na lista
@@ -11,7 +10,6 @@ export default function PushTask() {
 
   const [pushTask, setPushTask] = useState('') // pegar o texto do "input"
   const [Task, setTask] = useState([]) // enviar a texto para a lista de texto
-  const [isEdit, setIsEdit] = useState(false) // renderização para editar texto 
   
 
   // onChange do "Input" // setPushTask()
@@ -43,23 +41,6 @@ export default function PushTask() {
       newArray.splice(index,1)
       return setTask(newArray)
   }
-  // Função de editar a tarefa 
-
-  const EditTaskActive = (index) => {
-    setIsEdit(!isEdit)
-    const newArray = [...Task]
-    const objTask = {
-      task: pushTask,
-      isComplete: false
-     }
-    newArray.splice(newArray[index],1,objTask)
-    return setTask(newArray)
-  }
-
-  if (isEdit === true) return <EditTask 
-  PushTextInput={ (value) => {PushTextInput(value)}}
-  EditTaskActive={ () => { EditTaskActive()}}
-  /> 
   return (
     <div className='App'>
       <Input onChange={PushTextInput} />
@@ -72,7 +53,6 @@ export default function PushTask() {
        ConfirmTaskList={index => ConfirmTaskList(index)} 
        RemoveTaskList={index => RemoveTaskList(index)} 
        Task={Task}
-       EditTaskActive={index => EditTaskActive(index)}
        />
     </div>
   )

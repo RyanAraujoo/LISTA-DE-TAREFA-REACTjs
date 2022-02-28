@@ -19,11 +19,6 @@ export default function RenderTask (props) {
               <div className='txt-task'>
                   {task.task} 
               </div>
-                <Button active color='warning' className='btn-function'>
-                  <BsFillPencilFill onClick={()=> {
-                    props.EditTaskActive(index) // "ativar renderização para editar o texto" // via props // comando
-                  }}/>
-                </Button>
                 <Button active color='danger' className='btn-function'>
                   <BsFillXOctagonFill onClick={() => {
                       props.RemoveTaskList(index) // "push" da função via props // comando

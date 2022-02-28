@@ -11,7 +11,7 @@ import PushTask from './components/PushTask'
 import './Style.css'
 
 ReactDOM.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter>
     <Routes>
       <Route path='/' element={<App/>}/>
       <Route path='/Task' element={<PushTask/>}/>
