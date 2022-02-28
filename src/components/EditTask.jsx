@@ -1,7 +1,7 @@
 import { Input, Button} from 'reactstrap'
 export default function EditTask (props) {
     return (
-        <>
+        <div className='App'>
         <Input onChange={(value) => {
             props.PushTextInput(value)
         }}/>
@@ -12,6 +12,6 @@ export default function EditTask (props) {
             props.EditTaskActive()
           }}
         >Editar</Button>
-        </>
+        </div>
     )
 }

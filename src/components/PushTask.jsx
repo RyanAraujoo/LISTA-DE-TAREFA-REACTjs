@@ -1,6 +1,5 @@
 import { Input, Button} from 'reactstrap'
 import { useState } from 'react'
-import '../Style.css'
 import RenderTask from './RenderTask'
 import EditTask from './EditTask'
 export default function PushTask() {
@@ -53,15 +52,14 @@ export default function PushTask() {
       task: pushTask,
       isComplete: false
      }
-    newArray.splice(newArray[index],1,objTask) 
+    newArray.splice(newArray[index],1,objTask)
     return setTask(newArray)
   }
 
   if (isEdit === true) return <EditTask 
   PushTextInput={ (value) => {PushTextInput(value)}}
-  EditTaskActive={() => {EditTaskActive()}}
+  EditTaskActive={ () => { EditTaskActive()}}
   /> 
-// 
   return (
     <div className='App'>
       <Input onChange={PushTextInput} />
