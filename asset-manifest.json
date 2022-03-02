@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/LISTA-DE-TAREFA-REACTjs/static/css/main.df060711.css",
+    "main.js": "/LISTA-DE-TAREFA-REACTjs/static/js/main.822fb54d.js",
+    "index.html": "/LISTA-DE-TAREFA-REACTjs/index.html",
+    "main.df060711.css.map": "/LISTA-DE-TAREFA-REACTjs/static/css/main.df060711.css.map",
+    "main.822fb54d.js.map": "/LISTA-DE-TAREFA-REACTjs/static/js/main.822fb54d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df060711.css",
+    "static/js/main.822fb54d.js"
+  ]
+}
