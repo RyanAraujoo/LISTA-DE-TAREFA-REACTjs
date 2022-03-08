@@ -1,7 +1,7 @@
-import { Input, Button} from 'reactstrap'
-import { useState } from 'react'
+ import { Input, Button} from 'reactstrap'
+import {useState } from 'react'
 import RenderTask from './RenderTask'
-export default function PushTask() {
+export default function PushTask(props) {
   // 1 renderizar um "input" de texto
   // 2 botão renderiza o texto do "input" na lista
   // 3 renderizar a lista de tarefas (RenderTask.jsx)
@@ -10,7 +10,6 @@ export default function PushTask() {
 
   const [pushTask, setPushTask] = useState('') // pegar o texto do "input"
   const [Task, setTask] = useState([]) // enviar a texto para a lista de texto
-  
 
   // onChange do "Input" // setPushTask()
   const PushTextInput = (value) => {
@@ -22,9 +21,13 @@ export default function PushTask() {
     const objTask = {
     task: pushTask,
     isComplete: false
-   }
-      return setTask([...Task, objTask])
+   } 
+   if (pushTask == '') {
+     return setTask([...Task])
+  } else {
+    return setTask([...Task, objTask])
   }
+}
 
   // Função de confirmar a tarefa
 
@@ -41,7 +44,8 @@ export default function PushTask() {
       newArray.splice(index,1)
       return setTask(newArray)
   }
-  return (
+
+    return (
     <div className='App'>
       <Input onChange={PushTextInput} />
       <Button
